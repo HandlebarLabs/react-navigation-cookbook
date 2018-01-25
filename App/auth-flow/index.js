@@ -8,6 +8,17 @@ import SignIn from './screens/SignIn';
 import Home from './screens/Home';
 import Profile from './screens/Profile';
 
+const checkAuth = () => {
+  return new Promise(async (resolve, reject) => {
+    const isAuthorized = await AsyncStorage.getItem('authorized');
+    if (isAuthorized) {
+      resolve(true);
+    } else {
+      resolve(false);
+    }
+  });
+}
+
 const AuthStack = StackNavigator({
   SignUp: {
     screen: SignUp,
@@ -42,6 +53,7 @@ const PrimaryApp = TabNavigator(
   }
 );
 
+// NEW CODE
 class App extends React.Component {
   state = {
     isAuthorized: false,
@@ -83,14 +95,3 @@ class App extends React.Component {
 }
 
 export default App;
-
-const checkAuth = () => {
-  return new Promise(async (resolve, reject) => {
-    const isAuthorized = await AsyncStorage.getItem('authorized');
-    if (isAuthorized) {
-      resolve(true);
-    } else {
-      resolve(false);
-    }
-  });
-}

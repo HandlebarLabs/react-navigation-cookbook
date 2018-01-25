@@ -22,6 +22,7 @@ export default ({ navigation, screenProps }) => (
       <Button
         backgroundColor="#03A9F4"
         title="SIGN OUT"
+        // NEW CODE
         onPress={() => screenProps.signOut()}
       />
     </Card>

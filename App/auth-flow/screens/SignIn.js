@@ -14,6 +14,7 @@ export default ({ navigation, screenProps }) => (
         buttonStyle={{ marginTop: 20 }}
         backgroundColor="#03A9F4"
         title="SIGN IN"
+        // NEW CODE
         onPress={() => screenProps.signIn()}
       />
     </Card>
