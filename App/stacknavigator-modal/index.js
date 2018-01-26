@@ -3,7 +3,7 @@ import { Button, View, SafeAreaView} from 'react-native';
 import { StackNavigator } from 'react-navigation';
 
 const Home = ({ navigation }) => (
-  <View>
+  <SafeAreaView>
     <Button
       title="Go to details"
       onPress={() => navigation.navigate('Details')}
@@ -12,16 +12,16 @@ const Home = ({ navigation }) => (
       title="Go to modal"
       onPress={() => navigation.navigate('Modal')}
     />
-  </View>
+  </SafeAreaView>
 );
 
 const Details = ({ navigation }) => (
-  <View>
+  <SafeAreaView>
     <Button
       title="Go to modal"
       onPress={() => navigation.navigate('Modal')}
     />
-  </View>
+  </SafeAreaView>
 );
 
 const MainAppStack = StackNavigator({

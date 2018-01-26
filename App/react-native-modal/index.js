@@ -3,27 +3,27 @@ import { Button, View, SafeAreaView, Modal, Text, StyleSheet } from 'react-nativ
 import { StackNavigator } from 'react-navigation';
 
 const Home = ({ navigation, screenProps }) => (
-  <View>
+  <SafeAreaView>
     <Button
       title="Go to details"
       onPress={() => navigation.navigate('Details')}
     />
     <Button
       title="Go to modal"
-      onPress={() => null}
-      // onPress={() => screenProps.changeModalVisibility(true)}
+      // onPress={() => null}
+      onPress={() => screenProps.changeModalVisibility(true)}
     />
-  </View>
+  </SafeAreaView>
 );
 
 const Details = ({ navigation, screenProps }) => (
-  <View>
+  <SafeAreaView>
     <Button
       title="Go to modal"
-      onPress={() => null}
-      // onPress={() => screenProps.changeModalVisibility(true)}
+      // onPress={() => null}
+      onPress={() => screenProps.changeModalVisibility(true)}
     />
-  </View>
+  </SafeAreaView>
 );
 
 const MainAppStack = StackNavigator({
