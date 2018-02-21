@@ -2,6 +2,10 @@ import React from 'react';
 import { addNavigationHelpers } from 'react-navigation';
 import { Provider, connect } from 'react-redux';
 import { combineReducers, createStore, applyMiddleware } from 'redux';
+import {
+  createReduxBoundAddListener,
+  createReactNavigationReduxMiddleware,
+} from 'react-navigation-redux-helpers';
 import logger from 'redux-logger';
 
 import RootNavigator, { MainApp } from './router';
@@ -19,9 +23,15 @@ const rootReducer = combineReducers({
   nav: navReducer,
 });
 
+const reactNavigationMiddleware = createReactNavigationReduxMiddleware(
+  'root',
+  state => state.nav
+);
+const addListener = createReduxBoundAddListener("root");
+
 const App = ({ dispatch, nav }) => (
   <RootNavigator
-    navigation={addNavigationHelpers({ dispatch, state: nav })}
+    navigation={addNavigationHelpers({ dispatch, state: nav, addListener })}
   />
 );
 
@@ -31,7 +41,7 @@ const mapStateToProps = (state) => ({
 
 const AppWithNavigationState = connect(mapStateToProps)(App);
 
-const store = createStore(rootReducer, applyMiddleware(logger));
+const store = createStore(rootReducer, applyMiddleware(reactNavigationMiddleware, logger));
 
 export default () => (
   <Provider store={store}>
