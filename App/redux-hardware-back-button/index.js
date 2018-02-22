@@ -58,6 +58,7 @@ class App extends React.Component {
   }
 }
 
+
 const mapStateToProps = (state) => ({
   nav: state.nav
 });
